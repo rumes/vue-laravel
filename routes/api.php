@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PermissionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,5 +24,6 @@ Route::prefix('auth')->group(function () {
     Route::middleware(['api'])->group(function(){
         Route::get('user',[AuthController::class, 'getAuthUser']);
         Route::post('logout', [AuthController::class, 'logout']);
+        Route::resource('permissions', PermissionController::class);
     });
 });
